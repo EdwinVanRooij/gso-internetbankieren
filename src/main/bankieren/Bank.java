@@ -24,8 +24,8 @@ public class Bank extends UnicastRemoteObject implements IBankInCentrale {
         private ICentrale centrale;
 
 	public Bank(String name, ICentrale centrale) throws RemoteException {
-		accounts = new HashMap<Integer,IRekeningTbvBank>();
-		clients = new ArrayList<IKlant>();
+		accounts = new HashMap<>();
+		clients = new ArrayList<>();
 		nieuwReknr = 100000000;	
                 this.centrale = centrale;
 		this.name = name;

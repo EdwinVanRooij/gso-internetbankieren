@@ -36,7 +36,7 @@ public class Centrale implements ICentrale {
 
         Registry registry = LocateRegistry.createRegistry(Constants.PORT);
         UnicastRemoteObject.exportObject(this, Constants.PORT);
-        System.out.format("Binding with bindname %s", Constants.KEY_RMI_BINDNAME);
+        System.out.format("Binding with bindname %s\r\n", Constants.KEY_RMI_BINDNAME);
         registry.rebind(Constants.KEY_RMI_BINDNAME, this);
 
         System.out.println("[END]: Centrale.bindRegistry");

@@ -17,7 +17,7 @@ public class Balie extends UnicastRemoteObject implements IBalie {
 
     public Balie(IBank bank) throws RemoteException {
         this.bank = bank;
-        loginaccounts = new HashMap<String, ILoginAccount>();
+        loginaccounts = new HashMap<>();
         //sessions = new HashSet<IBankiersessie>();
         random = new Random();
     }

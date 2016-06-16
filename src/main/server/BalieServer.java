@@ -6,6 +6,7 @@
 package server;
 
 import bankieren.Bank;
+import bankieren.IBank;
 import centrale.ICentrale;
 import gui.BankierClient;
 import internettoegang.Balie;
@@ -67,35 +68,28 @@ public class BalieServer extends Application {
     }
 
 
-    public boolean startBalie(String nameBank) throws NotBoundException {
-        /**
-         * Initialize variables
-         */
-        Properties props = new Properties();
-
+    boolean startBalie(String nameBank) throws NotBoundException {
         /**
          * Save properties file
          */
         try (FileOutputStream out = new FileOutputStream(nameBank + ".props")) {
-
+            Properties props = new Properties();
             String propertiesFileName = String.format("%s:%s/%s", String.valueOf(Constants.IP), String.valueOf(Constants.PORT), nameBank);
             props.setProperty(Constants.KEY_BALIE, propertiesFileName);
             props.store(out, null);
 
-            try (FileInputStream in = new FileInputStream(Constants.PROPERTIES_FILENAME_CENTRALE)) {
-                props = new Properties();
-                props.load(in);
-                String addressCentrale = props.getProperty(Constants.KEY_IP);
-                String portCentrale = props.getProperty(Constants.KEY_PORT);
+            /**
+             * Get the centrale from registry
+             */
+            ICentrale centrale = getCentrale();
 
-
-                Registry registry = LocateRegistry.getRegistry(addressCentrale, Integer.parseInt(portCentrale));
-                ICentrale centrale = (ICentrale) registry.lookup(Constants.RMI_CENTRALE_BINDNAME);
-                registry = LocateRegistry.createRegistry(Constants.PORT);
-
-                IBalie balie = new Balie(new Bank(nameBank, centrale));
-                registry.rebind(nameBank, balie);
-            }
+            /**
+             * Bind balie to a registry, balie needs a centrale
+             */
+            Registry balieRegistry = LocateRegistry.createRegistry(Constants.PORT);
+            IBank rabobank = new Bank(nameBank, centrale);
+            IBalie balie = new Balie(rabobank);
+            balieRegistry.rebind(nameBank, balie);
 
             return true;
 
@@ -105,7 +99,20 @@ public class BalieServer extends Application {
         return false;
     }
 
-    public void gotoBankSelect() {
+    private ICentrale getCentrale() throws IOException, NotBoundException {
+        try (FileInputStream in = new FileInputStream(Constants.PROPERTIES_FILENAME_CENTRALE)) {
+            Properties props = new Properties();
+            props.load(in);
+            String addressCentrale = props.getProperty(Constants.KEY_IP);
+            String portCentrale = props.getProperty(Constants.KEY_PORT);
+
+            Registry centraleRegistry = LocateRegistry.getRegistry(addressCentrale, Integer.parseInt(portCentrale));
+            return (ICentrale) centraleRegistry.lookup(Constants.RMI_CENTRALE_BINDNAME);
+        }
+    }
+
+
+    private void gotoBankSelect() {
         try {
             server.BalieController bankSelect = (server.BalieController) replaceSceneContent(Constants.KEY_BALIE_FXML);
             bankSelect.setApp(this);
