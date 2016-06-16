@@ -1,4 +1,4 @@
-package main.observer;
+package observer;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

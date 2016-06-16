@@ -1,6 +1,6 @@
 /*
  */
-package main.centrale;
+package centrale;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
-package main.internettoegang;
+package internettoegang;
 
-import main.bankieren.IBank;
+import bankieren.IBank;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

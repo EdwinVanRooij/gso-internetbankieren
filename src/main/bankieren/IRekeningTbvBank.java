@@ -1,4 +1,4 @@
-package main.bankieren;
+package bankieren;
 
 public interface IRekeningTbvBank extends IRekening {
 	/**

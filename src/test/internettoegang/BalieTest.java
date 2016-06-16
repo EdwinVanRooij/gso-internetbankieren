@@ -1,15 +1,15 @@
 package internettoegang;
 
-import main.bankieren.Bank;
-import main.bankieren.Geld;
-import main.bankieren.IBank;
-import main.bankieren.IRekening;
-import main.centrale.Centrale;
-import main.centrale.IBankTbvCentrale;
-import main.centrale.ICentrale;
-import main.internettoegang.Balie;
-import main.internettoegang.IBalie;
-import main.internettoegang.IBankiersessie;
+import bankieren.Bank;
+import bankieren.Geld;
+import bankieren.IBank;
+import bankieren.IRekening;
+import centrale.Centrale;
+import centrale.IBankTbvCentrale;
+import centrale.ICentrale;
+import internettoegang.Balie;
+import internettoegang.IBalie;
+import internettoegang.IBankiersessie;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

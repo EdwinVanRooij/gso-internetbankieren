@@ -1,4 +1,4 @@
-package main.bankieren;
+package bankieren;
 
 import java.io.Serializable;
 

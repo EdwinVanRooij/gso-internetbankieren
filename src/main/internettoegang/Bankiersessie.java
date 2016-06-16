@@ -1,11 +1,11 @@
-package main.internettoegang;
+package internettoegang;
 
-import main.bankieren.IBank;
-import main.bankieren.IRekening;
-import main.bankieren.Geld;
-import main.observer.IRemotePropertyListener;
-import main.util.InvalidSessionException;
-import main.util.NumberDoesntExistException;
+import bankieren.IBank;
+import bankieren.IRekening;
+import bankieren.Geld;
+import observer.IRemotePropertyListener;
+import util.InvalidSessionException;
+import util.NumberDoesntExistException;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

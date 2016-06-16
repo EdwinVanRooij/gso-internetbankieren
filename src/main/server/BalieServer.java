@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.server;
+package server;
 
-import main.bankieren.Bank;
-import main.centrale.ICentrale;
-import main.gui.BankierClient;
-import main.internettoegang.Balie;
-import main.internettoegang.IBalie;
+import bankieren.Bank;
+import centrale.ICentrale;
+import gui.BankierClient;
+import internettoegang.Balie;
+import internettoegang.IBalie;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -116,7 +116,7 @@ public class BalieServer extends Application {
 
     public void gotoBankSelect() {
         try {
-            main.server.BalieController bankSelect = (main.server.BalieController) replaceSceneContent("Balie.fxml");
+            server.BalieController bankSelect = (server.BalieController) replaceSceneContent("Balie.fxml");
             bankSelect.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(BankierClient.class.getName()).log(Level.SEVERE, null, ex);

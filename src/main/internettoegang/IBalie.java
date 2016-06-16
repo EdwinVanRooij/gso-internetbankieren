@@ -1,4 +1,4 @@
-package main.internettoegang;
+package internettoegang;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

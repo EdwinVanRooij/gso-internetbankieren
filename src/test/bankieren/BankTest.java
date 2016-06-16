@@ -1,17 +1,17 @@
 package bankieren;
 
-import main.bankieren.Bank;
-import main.bankieren.Geld;
-import main.bankieren.IBank;
-import main.bankieren.Klant;
-import main.centrale.Centrale;
-import main.centrale.IBankTbvCentrale;
-import main.centrale.ICentrale;
+import bankieren.Bank;
+import bankieren.Geld;
+import bankieren.IBank;
+import bankieren.Klant;
+import centrale.Centrale;
+import centrale.IBankTbvCentrale;
+import centrale.ICentrale;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import main.util.NumberDoesntExistException;
+import util.NumberDoesntExistException;
 
 import static org.junit.Assert.*;
 

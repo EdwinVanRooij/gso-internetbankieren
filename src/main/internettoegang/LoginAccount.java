@@ -1,4 +1,4 @@
-package main.internettoegang;
+package internettoegang;
 
 
 public class LoginAccount implements ILoginAccount {

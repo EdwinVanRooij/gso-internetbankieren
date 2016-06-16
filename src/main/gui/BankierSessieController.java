@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.gui;
+package gui;
 
-import main.bankieren.IRekening;
-import main.bankieren.Geld;
-import main.internettoegang.IBalie;
-import main.internettoegang.IBankiersessie;
+import bankieren.IRekening;
+import bankieren.Geld;
+import internettoegang.IBalie;
+import internettoegang.IBankiersessie;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -18,9 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import main.observer.IRemotePropertyListener;
-import main.util.InvalidSessionException;
-import main.util.NumberDoesntExistException;
+import observer.IRemotePropertyListener;
+import util.InvalidSessionException;
+import util.NumberDoesntExistException;
 
 import java.beans.PropertyChangeEvent;
 import java.net.URL;

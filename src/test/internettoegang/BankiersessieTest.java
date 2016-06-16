@@ -1,18 +1,18 @@
 package internettoegang;
 
-import main.bankieren.Bank;
-import main.bankieren.Geld;
-import main.bankieren.IBank;
-import main.bankieren.IRekening;
-import main.centrale.Centrale;
-import main.centrale.ICentrale;
-import main.internettoegang.Bankiersessie;
-import main.internettoegang.IBankiersessie;
+import bankieren.Bank;
+import bankieren.Geld;
+import bankieren.IBank;
+import bankieren.IRekening;
+import centrale.Centrale;
+import centrale.ICentrale;
+import internettoegang.Bankiersessie;
+import internettoegang.IBankiersessie;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import main.util.InvalidSessionException;
+import util.InvalidSessionException;
 
 import java.rmi.RemoteException;
 
@@ -91,7 +91,7 @@ public class BankiersessieTest {
                 Thread.sleep(IBankiersessie.GELDIGHEIDSDUUR);
                 assertNotEquals("Bankiersessie zou nu niet meer geldig moeten zijn. " +
                         "Geldigheidsduur is bereikt.", bankiersessie.isGeldig());
-            } catch (InterruptedException | RemoteException | main.util.InvalidSessionException e) {
+            } catch (InterruptedException | RemoteException | util.InvalidSessionException e) {
                 e.printStackTrace();
             }
         }).start();

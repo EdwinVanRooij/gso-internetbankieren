@@ -1,6 +1,6 @@
-package main.bankieren;
+package bankieren;
 
-import main.util.*;
+import util.*;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

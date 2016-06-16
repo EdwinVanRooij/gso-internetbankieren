@@ -1,8 +1,8 @@
-package main.bankieren;
+package bankieren;
 
-import main.centrale.IBankTbvCentrale;
-import main.centrale.ICentrale;
-import main.util.*;
+import centrale.IBankTbvCentrale;
+import centrale.ICentrale;
+import util.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

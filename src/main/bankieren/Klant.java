@@ -1,4 +1,4 @@
-package main.bankieren;
+package bankieren;
 
 public class Klant implements IKlant {
 

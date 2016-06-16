@@ -9,10 +9,10 @@
  * and open the template in the editor.
  */
 
-package main.gui;
+package gui;
 
-import main.internettoegang.IBalie;
-import main.internettoegang.IBankiersessie;
+import internettoegang.IBalie;
+import internettoegang.IBankiersessie;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

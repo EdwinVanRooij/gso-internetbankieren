@@ -1,7 +1,7 @@
-package main.bankieren;
+package bankieren;
 
-import main.observer.BasicPublisher;
-import main.observer.IRemotePropertyListener;
+import observer.BasicPublisher;
+import observer.IRemotePropertyListener;
 
 import java.rmi.RemoteException;
 

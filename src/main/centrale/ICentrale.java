@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.centrale;
+package centrale;
 
-import main.bankieren.Geld;
-import main.util.NumberDoesntExistException;
+import bankieren.Geld;
+import util.NumberDoesntExistException;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

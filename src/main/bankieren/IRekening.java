@@ -1,6 +1,6 @@
-package main.bankieren;
+package bankieren;
 
-import main.observer.IRemotePublisher;
+import observer.IRemotePublisher;
 
 import java.io.Serializable;
 

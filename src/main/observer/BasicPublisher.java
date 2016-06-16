@@ -1,4 +1,4 @@
-package main.observer;
+package observer;
 
 import java.beans.PropertyChangeEvent;
 import java.rmi.RemoteException;
