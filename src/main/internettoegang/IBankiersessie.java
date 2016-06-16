@@ -13,7 +13,7 @@ public interface IBankiersessie extends Remote {
 
 	// Set this variable to 1000 when testing
 	// back to 600000 when done
-	long GELDIGHEIDSDUUR = 1000;
+	long GELDIGHEIDSDUUR = 600000;
 	/**
 	 * @returns true als de laatste aanroep van getRekening of maakOver voor deze
 	 *          sessie minder dan GELDIGHEIDSDUUR geleden is
