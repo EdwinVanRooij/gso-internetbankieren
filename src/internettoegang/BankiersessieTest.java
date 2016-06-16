@@ -5,8 +5,10 @@ import bankieren.Geld;
 import bankieren.IBank;
 import bankieren.IRekening;
 import centrale.Centrale;
+import centrale.ICentrale;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import util.InvalidSessionException;
 
@@ -35,10 +37,17 @@ public class BankiersessieTest {
     private int rekeningNummer;
     private int karelRekeningNummer;
 
+    private static ICentrale centrale;
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        centrale = new Centrale();
+    }
+
     @Before
     public void setUp() throws Exception {
         // Build all variables up
-        bank = new Bank(BANK_NAAM, new Centrale());
+        bank = new Bank(BANK_NAAM, centrale);
         rekeningNummer = bank.openRekening(HENK_NAAM, HENK_PLAATS);
         karelRekeningNummer = bank.openRekening(KAREL_NAAM, KAREL_PLAATS);
         bankiersessie = new Bankiersessie(rekeningNummer, bank);
@@ -47,6 +56,7 @@ public class BankiersessieTest {
     @After
     public void tearDown() throws Exception {
         // Clear all variables
+        centrale.removeBank(bank.getName());
         bank = null;
         rekeningNummer = 0;
         karelRekeningNummer = 0;

@@ -10,8 +10,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IBankiersessie extends Remote {
-	
-	long GELDIGHEIDSDUUR = 600000; 
+
+	// Set this variable to 1000 when testing
+	// back to 600000 when done
+	long GELDIGHEIDSDUUR = 1000;
 	/**
 	 * @returns true als de laatste aanroep van getRekening of maakOver voor deze
 	 *          sessie minder dan GELDIGHEIDSDUUR geleden is

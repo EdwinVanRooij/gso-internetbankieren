@@ -1,4 +1,4 @@
-#Wed Jun 15 23:26:59 CEST 2016
-centrale=192.168.1.41\:1234/centrale
+#Thu Jun 16 13:19:05 CEST 2016
+centrale=192.168.225.64\:1234/centrale
 port=1234
-ip=192.168.1.41
+ip=192.168.225.64

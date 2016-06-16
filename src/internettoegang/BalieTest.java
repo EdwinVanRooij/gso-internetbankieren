@@ -5,8 +5,11 @@ import bankieren.Geld;
 import bankieren.IBank;
 import bankieren.IRekening;
 import centrale.Centrale;
+import centrale.IBankTbvCentrale;
+import centrale.ICentrale;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.rmi.RemoteException;
@@ -31,11 +34,19 @@ public class BalieTest {
     private IBank bank;
     private IBalie balie;
     private String henkAccountNaam;
+    private static ICentrale centrale;
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        centrale = new Centrale();
+    }
 
     @Before
     public void setUp() throws Exception {
         // Build all variables up
-        bank = new Bank(BANK_NAAM, new Centrale());
+        bank = new Bank(BANK_NAAM, centrale);
+        centrale.addBank((IBankTbvCentrale) bank);
+
         balie = new Balie(bank);
         henkAccountNaam = balie.openRekening(HENK_NAAM, HENK_PLAATS, HENK_WACHTWOORD);
     }
@@ -43,6 +54,7 @@ public class BalieTest {
     @After
     public void tearDown() throws Exception {
         // Clear all variables
+        centrale.removeBank(bank.getName());
         bank = null;
         balie = null;
         henkAccountNaam = null;

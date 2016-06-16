@@ -1,9 +1,13 @@
 package bankieren;
 
 import centrale.Centrale;
-import util.NumberDoesntExistException;
+import centrale.IBankTbvCentrale;
+import centrale.ICentrale;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import util.NumberDoesntExistException;
 
 import static org.junit.Assert.*;
 
@@ -14,19 +18,34 @@ import static org.junit.Assert.*;
 public class BankTest {
     private static final String HENK_NAAM = "Henk";
     private static final String HENK_PLAATS = "Eindhoven";
-    private static final String BANK_NAAM = "testBank";
+
+    private static final String BANK_NAAM = "Rabobank";
 
     public static final String PIET_NAAM = "Piet";
     public static final String PIET_PLAATS = "Veldhoven";
 
     private Klant henk;
     private IBank bank;
+    private static ICentrale centrale;
     //test
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        centrale = new Centrale();
+    }
 
     @Before
     public void setUp() throws Exception {
         henk = new Klant(HENK_NAAM, HENK_PLAATS);
-        bank = new Bank(BANK_NAAM, new Centrale());
+        bank = new Bank(BANK_NAAM, centrale);
+        centrale.addBank((IBankTbvCentrale) bank);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        henk = null;
+        centrale.removeBank(bank.getName());
+        bank = null;
     }
 
     @Test
@@ -89,7 +108,7 @@ public class BankTest {
         //Happy Flow
         int bronHappy = bank.openRekening("1", "1");
         int bestemmingHappy = bank.openRekening("2", "2");
-        assertTrue("maakOver happy flow did not succeed", bank.maakOver("Rabobank", bronHappy, bestemmingHappy, bedrag));
+        assertTrue("maakOver happy flow did not succeed", bank.maakOver(bank.getName(), bronHappy, bestemmingHappy, bedrag));
 
         //Exception
         try {
@@ -112,7 +131,7 @@ public class BankTest {
         int bronTooMuch = bank.openRekening("4", "4");
         int bestemmingTooMuch = bank.openRekening("5", "5");
         bedrag = new Geld(10001, Geld.EURO);
-        assertFalse("maakOver too much succeeded incorrectly", bank.maakOver("Rabobank", bronTooMuch, bestemmingTooMuch, bedrag));
+        assertFalse("maakOver too much succeeded incorrectly", bank.maakOver(bank.getName(), bronTooMuch, bestemmingTooMuch, bedrag));
 
         //Number must be higher than 0
         int bronNegatiefBedrag = bank.openRekening("4", "4");
