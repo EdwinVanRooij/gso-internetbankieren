@@ -30,7 +30,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author frankcoenen
  */
 public class BalieServer extends Application {
@@ -55,7 +54,7 @@ public class BalieServer extends Application {
             ex.printStackTrace();
         }
     }
-    
+
     protected String connectToCentraleString() {
         try {
             FileInputStream in = new FileInputStream("centrale.props");
@@ -66,52 +65,50 @@ public class BalieServer extends Application {
 
             return "rmi://" + rmiCentrale;
 
-            } catch (Exception exc) {
-                exc.printStackTrace();
-                return null;
-            }
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            return null;
+        }
     }
 
+
     public boolean startBalie(String nameBank) throws NotBoundException {
-            FileOutputStream out = null;
-            try {
-                this.nameBank = nameBank;
-                String address = java.net.InetAddress.getLocalHost().getHostAddress();
-                int port = 1233;
-                Properties props = new Properties();
-                String rmiBalie = address + ":" + port + "/" + nameBank;
-                props.setProperty("balie", rmiBalie);
-                out = new FileOutputStream(nameBank + ".props");
-                props.store(out, null);
-                out.close();
-                
-                FileInputStream in = new FileInputStream("centrale.props");
+        /**
+         * Initialize variables
+         */
+        Properties props = new Properties();
+        this.nameBank = nameBank;
+
+        /**
+         * Save properties file
+         */
+        try (FileOutputStream out = new FileOutputStream(this.nameBank + ".props")) {
+
+            String propertiesFileName = String.format("%s:%s/%s", String.valueOf(Constants.IP), String.valueOf(Constants.PORT), this.nameBank);
+            props.setProperty(Constants.KEY_BALIE, propertiesFileName);
+            props.store(out, null);
+
+            try (FileInputStream in = new FileInputStream(Constants.PROPERTIES_FILENAME_CENTRALE)) {
                 props = new Properties();
                 props.load(in);
-                String addressCentrale = props.getProperty("ip");
-                String portCentrale = props.getProperty("port");
-                in.close();
-                
+                String addressCentrale = props.getProperty(Constants.KEY_IP);
+                String portCentrale = props.getProperty(Constants.KEY_PORT);
+
+
                 Registry registry = LocateRegistry.getRegistry(addressCentrale, Integer.parseInt(portCentrale));
-                ICentrale centrale = (ICentrale) registry.lookup("main/centrale");
-                registry = LocateRegistry.createRegistry(port);
-                
+                ICentrale centrale = (ICentrale) registry.lookup(Constants.RMI_CENTRALE_BINDNAME);
+                registry = LocateRegistry.createRegistry(Constants.PORT);
+
                 IBalie balie = new Balie(new Bank(nameBank, centrale));
                 registry.rebind(nameBank, balie);
-                //Naming.rebind(nameBank, balie);
-               
-                return true;
-
-            } catch (IOException ex) {
-                Logger.getLogger(BalieServer.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    out.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(BalieServer.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
-            return false;
+
+            return true;
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 
     public void gotoBankSelect() {
