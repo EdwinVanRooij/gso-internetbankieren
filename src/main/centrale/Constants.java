@@ -12,7 +12,7 @@ class Constants {
     static final String RMI_BINDNAME = IP + ":" + Constants.PORT + Constants.KEY_RMI_BINDNAME;
 
 //    Keys
-    static final String KEY_RMI_BINDNAME = "/main/centrale";
+    static final String KEY_RMI_BINDNAME = "main/centrale";
     static final String KEY_IP = "ip";
     static final String KEY_PORT = "port";
 }
