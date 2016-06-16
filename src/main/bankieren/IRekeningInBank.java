@@ -1,6 +1,6 @@
 package bankieren;
 
-public interface IRekeningTbvBank extends IRekening {
+public interface IRekeningInBank extends IRekening {
 	/**
 	 * het saldo van deze bankrekening wordt met bedrag aangepast, tenzij het
 	 * saldotekort groter wordt dan het maximale krediet, dan verandert er niets

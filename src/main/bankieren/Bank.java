@@ -17,7 +17,7 @@ public class Bank extends UnicastRemoteObject implements IBankInCentrale {
 	 * 
 	 */
 	private static final long serialVersionUID = -8728841131739353765L;
-	private Map<Integer,IRekeningTbvBank> accounts;
+	private Map<Integer, IRekeningInBank> accounts;
 	private Collection<IKlant> clients;
 	private int nieuwReknr;
 	private String name;
@@ -39,7 +39,7 @@ public class Bank extends UnicastRemoteObject implements IBankInCentrale {
 			return -1;
 
 		IKlant klant = getKlant(name, city);
-		IRekeningTbvBank account = new Rekening(nieuwReknr, klant, Geld.EURO);
+		IRekeningInBank account = new Rekening(nieuwReknr, klant, Geld.EURO);
 		accounts.put(nieuwReknr,account);
 		nieuwReknr++;
 		return nieuwReknr-1;
@@ -75,7 +75,7 @@ public class Bank extends UnicastRemoteObject implements IBankInCentrale {
 		if (!money.isPositive())
 			throw new RuntimeException("money must be positive");
 
-		IRekeningTbvBank source_account = (IRekeningTbvBank) getRekening(source);
+		IRekeningInBank source_account = (IRekeningInBank) getRekening(source);
 		if (source_account == null)
 			throw new NumberDoesntExistException("Source account " + source
 					+ " unknown at " + name);
@@ -109,7 +109,7 @@ public class Bank extends UnicastRemoteObject implements IBankInCentrale {
         if (!money.isPositive())
                 throw new RuntimeException("money must be positive");
 
-        IRekeningTbvBank dest_account = (IRekeningTbvBank) getRekening(destination);
+        IRekeningInBank dest_account = (IRekeningInBank) getRekening(destination);
         if (dest_account == null) 
                 throw new NumberDoesntExistException("Destination account " + destination
                                 + " unknown at " + name);
