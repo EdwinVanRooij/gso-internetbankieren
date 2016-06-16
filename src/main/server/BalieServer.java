@@ -15,7 +15,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -35,18 +34,14 @@ import java.util.logging.Logger;
 public class BalieServer extends Application {
 
     private Stage stage;
-    private final double MINIMUM_WINDOW_WIDTH = 600.0;
-    private final double MINIMUM_WINDOW_HEIGHT = 200.0;
-    private String nameBank;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-
         try {
             stage = primaryStage;
-            stage.setTitle("Bankieren");
-            stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
-            stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+            stage.setTitle(Constants.WINDOW_TITLE);
+            stage.setMinWidth(Constants.MINIMUM_WINDOW_WIDTH);
+            stage.setMinHeight(Constants.MINIMUM_WINDOW_HEIGHT);
             gotoBankSelect();
 
             primaryStage.show();
@@ -77,14 +72,13 @@ public class BalieServer extends Application {
          * Initialize variables
          */
         Properties props = new Properties();
-        this.nameBank = nameBank;
 
         /**
          * Save properties file
          */
-        try (FileOutputStream out = new FileOutputStream(this.nameBank + ".props")) {
+        try (FileOutputStream out = new FileOutputStream(nameBank + ".props")) {
 
-            String propertiesFileName = String.format("%s:%s/%s", String.valueOf(Constants.IP), String.valueOf(Constants.PORT), this.nameBank);
+            String propertiesFileName = String.format("%s:%s/%s", String.valueOf(Constants.IP), String.valueOf(Constants.PORT), nameBank);
             props.setProperty(Constants.KEY_BALIE, propertiesFileName);
             props.store(out, null);
 
@@ -113,7 +107,7 @@ public class BalieServer extends Application {
 
     public void gotoBankSelect() {
         try {
-            server.BalieController bankSelect = (server.BalieController) replaceSceneContent("Balie.fxml");
+            server.BalieController bankSelect = (server.BalieController) replaceSceneContent(Constants.KEY_BALIE_FXML);
             bankSelect.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(BankierClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,19 +116,15 @@ public class BalieServer extends Application {
 
     private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        InputStream in = BalieServer.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(BalieServer.class.getResource(fxml));
-        AnchorPane page;
-        try {
-            page = (AnchorPane) loader.load(in);
-        } finally {
-            in.close();
+        try (InputStream in = BalieServer.class.getResourceAsStream(fxml)) {
+            loader.setBuilderFactory(new JavaFXBuilderFactory());
+            loader.setLocation(BalieServer.class.getResource(fxml));
+
+            Scene scene = new Scene(loader.load(in), 800, 600);
+            stage.setScene(scene);
+            stage.sizeToScene();
+            return (Initializable) loader.getController();
         }
-        Scene scene = new Scene(page, 800, 600);
-        stage.setScene(scene);
-        stage.sizeToScene();
-        return (Initializable) loader.getController();
     }
 
     /**

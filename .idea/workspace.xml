@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d44f3d86-0c41-48e3-9a55-36c71adfd129" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/server/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/server/BalieServer.java" afterPath="$PROJECT_DIR$/src/main/server/BalieServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/server/Constants.java" afterPath="$PROJECT_DIR$/src/main/server/Constants.java" />
     </list>
     <ignored path="untitled.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="BalieServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/server/BalieServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+            <state relative-caret-position="242">
+              <caret line="42" column="60" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -52,8 +51,8 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/server/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+            <state relative-caret-position="242">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -121,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/main/centrale/CentraleServer.java" />
         <option value="$PROJECT_DIR$/src/main/centrale/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/centrale/Centrale.java" />
-        <option value="$PROJECT_DIR$/src/main/server/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/server/BalieServer.java" />
+        <option value="$PROJECT_DIR$/src/main/server/Constants.java" />
       </list>
     </option>
   </component>
@@ -771,7 +770,7 @@
       <workItem from="1466071657722" duration="2982000" />
       <workItem from="1466078407346" duration="1892000" />
       <workItem from="1466081085715" duration="670000" />
-      <workItem from="1466083546444" duration="2283000" />
+      <workItem from="1466083546444" duration="2550000" />
     </task>
     <servers />
   </component>
@@ -808,7 +807,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8848000" />
+    <option name="totallyTimeSpent" value="9115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1201,14 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/server/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/centrale/Centrale.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -1219,10 +1210,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/server/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/server/BalieServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="93" column="48" selection-start-line="93" selection-start-column="48" selection-end-line="93" selection-end-column="48" />
+        <state relative-caret-position="242">
+          <caret line="42" column="60" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="60" />
           <folding />
         </state>
       </provider>
