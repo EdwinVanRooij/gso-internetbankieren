@@ -15,7 +15,7 @@ import java.rmi.RemoteException;
  * @author Edwin
  *         Created on 6/16/2016
  */
-public interface IBankTbvCentrale extends IBank {
+public interface IBankInCentrale extends IBank {
     
     /**
      * overboeking van geld naar een rekening van een andere bank via de centrale

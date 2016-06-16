@@ -1,11 +1,7 @@
 package bankieren;
 
-import bankieren.Bank;
-import bankieren.Geld;
-import bankieren.IBank;
-import bankieren.Klant;
 import centrale.Centrale;
-import centrale.IBankTbvCentrale;
+import centrale.IBankInCentrale;
 import centrale.ICentrale;
 import org.junit.After;
 import org.junit.Before;
@@ -41,7 +37,7 @@ public class BankTest {
     public void setUp() throws Exception {
         henk = new Klant(HENK_NAAM, HENK_PLAATS);
         bank = new Bank(BANK_NAAM, centrale);
-        centrale.addBank((IBankTbvCentrale) bank);
+        centrale.addBank((IBankInCentrale) bank);
     }
 
     @After

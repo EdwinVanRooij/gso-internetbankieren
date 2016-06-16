@@ -5,11 +5,8 @@ import bankieren.Geld;
 import bankieren.IBank;
 import bankieren.IRekening;
 import centrale.Centrale;
-import centrale.IBankTbvCentrale;
+import centrale.IBankInCentrale;
 import centrale.ICentrale;
-import internettoegang.Balie;
-import internettoegang.IBalie;
-import internettoegang.IBankiersessie;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -48,7 +45,7 @@ public class BalieTest {
     public void setUp() throws Exception {
         // Build all variables up
         bank = new Bank(BANK_NAAM, centrale);
-        centrale.addBank((IBankTbvCentrale) bank);
+        centrale.addBank((IBankInCentrale) bank);
 
         balie = new Balie(bank);
         henkAccountNaam = balie.openRekening(HENK_NAAM, HENK_PLAATS, HENK_WACHTWOORD);

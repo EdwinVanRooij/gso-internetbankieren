@@ -1,6 +1,6 @@
 package bankieren;
 
-import centrale.IBankTbvCentrale;
+import centrale.IBankInCentrale;
 import centrale.ICentrale;
 import util.*;
 
@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Bank extends UnicastRemoteObject implements IBankTbvCentrale {
+public class Bank extends UnicastRemoteObject implements IBankInCentrale {
 
 	/**
 	 * 

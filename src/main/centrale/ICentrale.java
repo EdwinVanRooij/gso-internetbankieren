@@ -15,7 +15,7 @@ import java.rmi.RemoteException;
  * @author Edwin
  *         Created on 6/16/2016
  */
-public interface ICentrale extends Remote{
+public interface ICentrale extends Remote {
     
     /**
      * registratie van een nieuwe bank
@@ -26,33 +26,27 @@ public interface ICentrale extends Remote{
      * @throws RemoteException
      *             als er iets mis is met de verbinding, of er niet wordt gereageerd op de methodeaanroep
      */
-    boolean addBank(IBankTbvCentrale bank) throws RemoteException;
+    boolean addBank(IBankInCentrale bank) throws RemoteException;
     
     /**
      * verwijderen van een bank
      * 
-     * @param naam 
-     *            van de bank
+     * @param bankNaam de bank die je wilt verwijderen
+     *
      * @return true wanneer het gelukt is en false wanneer er een fout is opgetreden
-     * @throws RemoteException
-     *             als er iets mis is met de verbinding, of er niet wordt gereageerd op de methodeaanroep
+     * @throws RemoteException bij een communicatiefout
      */
-    boolean removeBank(String naam) throws RemoteException;
+    boolean removeBank(String bankNaam) throws RemoteException;
     
     /**
      * overboeking van geld naar een rekening van een andere bank via de centrale
      * 
-     * @param bank 
-     *            waarbij de rekening bekend is
-     * @param ontvanger
-     *            Rekeningnummer van de ontvangende partij
-     * @param amount 
-     *            hoeveelheid geld die wordt overgemaakt
+     * @param bank de bank waar het geld naartoe gaat
+     * @param ontvanger Rekeningnummer van de ontvanger
+     * @param bedrag hoeveelheid geld die wordt overgemaakt
      * @return true wanneer het gelukt is en false wanneer er een fout is opgetreden
-     * @throws RemoteException
-     *             als er iets mis is met de verbinding, of er niet wordt gereageerd op de methodeaanroep
-     * @throws NumberDoesntExistException
-     *             wanneer het meegegeven bedrag negatief is
+     * @throws RemoteException bij een communicatiefout
+     * @throws NumberDoesntExistException incorrect bedrag
      */
-    boolean transferToBank(String bank, int ontvanger, Geld amount) throws RemoteException, NumberDoesntExistException;
+    boolean transferToBank(String bank, int ontvanger, Geld bedrag) throws RemoteException, NumberDoesntExistException;
 }
