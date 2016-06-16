@@ -6,8 +6,8 @@ import java.rmi.RemoteException;
 import java.util.EventListener;
 
 /**
- *
- * @author cas
+ * @author Edwin
+ *         Created on 6/16/2016
  */
 public interface IRemotePropertyListener extends EventListener, Remote {
     

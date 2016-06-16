@@ -18,8 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author cas
+ * @author Edwin
+ *         Created on 6/16/2016
  */
 public class Centrale implements ICentrale {
 

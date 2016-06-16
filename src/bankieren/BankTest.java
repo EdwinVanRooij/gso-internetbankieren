@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Dennis on 14/06/16
- * Package: bank.bankieren
  */
 public class BankTest {
     private static final String HENK_NAAM = "Henk";

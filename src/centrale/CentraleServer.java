@@ -5,8 +5,8 @@ package centrale;
 import java.io.IOException;
 
 /**
- *
- * @author cas
+ * @author Edwin
+ *         Created on 6/16/2016
  */
 public class CentraleServer {
 

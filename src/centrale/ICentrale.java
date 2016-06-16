@@ -12,8 +12,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- *
- * @author Dennis
+ * @author Edwin
+ *         Created on 6/16/2016
  */
 public interface ICentrale extends Remote{
     

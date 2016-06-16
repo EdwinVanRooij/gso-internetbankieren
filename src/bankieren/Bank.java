@@ -11,8 +11,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-// Jenkins test
-
 public class Bank extends UnicastRemoteObject implements IBankTbvCentrale {
 
 	/**
